@@ -33,6 +33,7 @@ func (apiCfg *apiConfig) handleCreateFeed(w http.ResponseWriter, r *http.Request
 	if err != nil {
 		log.Printf("%v", err)
 		responseWithErr(w, 400, "Please provide name %v")
+		return
 	}
 	responseWithJson(w, 201, convertDbFeedToNormalFeed(feed))
 }

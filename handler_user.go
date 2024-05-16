@@ -29,7 +29,8 @@ func (apiCfg *apiConfig) handleCreateUser(w http.ResponseWriter, r *http.Request
 	})
 	if err != nil {
 		log.Printf("%v", err)
-		responseWithErr(w, 400, "Please provide name %v")
+		responseWithErr(w, 400, "Please provide name "+err.Error())
+		return
 	}
 	responseWithJson(w, 200, convertDbUserToNormalUser(user))
 }

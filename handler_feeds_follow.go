@@ -30,7 +30,8 @@ func (apiCfg *apiConfig) handleCreateFeedsFollow(w http.ResponseWriter, r *http.
 	})
 	if err != nil {
 		log.Printf("%v", err)
-		responseWithErr(w, 400, "Please provide name %v")
+		responseWithErr(w, 400, err.Error())
+		return
 	}
 	responseWithJson(w, 201, convertDbFeedsFollowToNormalFeedsFollow(feeds_follow))
 }
